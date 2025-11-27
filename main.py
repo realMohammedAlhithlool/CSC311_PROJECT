@@ -153,6 +153,9 @@ def revert_colors(scatter_plot_object=scatter):
     plt.draw()
     #print("All point colors reverted to original.")
 
+#Math Sign function
+def sign(n):
+    return (n > 0) - (n < 0)
 
 #Brute Force
 def BF():
@@ -179,7 +182,8 @@ def BF():
 
             #calculate side of point to line
             direction = (p[0] - p1[0])*(p2[1]-p1[1]) - (p[1] - p1[1])*(p2[0]-p1[0])
-            direction = +1 if direction > 0 else -1
+            #converge to one of two sides or colinear
+            direction = sign(direction)
 
             change_point_color(index, new_color= 'green' if direction==+1 else 'yellow')
             if direction != 0:#Not colinear
